@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Novino", "Frameworks\src\Novino\Novino.csproj", "{47AE208A-3371-46A3-A6F8-BB95D6E54294}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", "{E64DC8B8-55EA-4D2F-A06E-A5CE7FBDD19B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FEF51E9E-5E39-40BC-B2F8-274AE2C28617}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FEF51E9E-5E39-40BC-B2F8-274AE2C28617} = {E64DC8B8-55EA-4D2F-A06E-A5CE7FBDD19B}
+		{47AE208A-3371-46A3-A6F8-BB95D6E54294} = {FEF51E9E-5E39-40BC-B2F8-274AE2C28617}
+	EndGlobalSection
+EndGlobal
