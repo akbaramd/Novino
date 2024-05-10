@@ -6,6 +6,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frameworks", "Frameworks", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FEF51E9E-5E39-40BC-B2F8-274AE2C28617}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Novino.Abstractions", "Frameworks\src\Novino.Abstractions\Novino.Abstractions.csproj", "{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,9 +18,14 @@ Global
 		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47AE208A-3371-46A3-A6F8-BB95D6E54294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FEF51E9E-5E39-40BC-B2F8-274AE2C28617} = {E64DC8B8-55EA-4D2F-A06E-A5CE7FBDD19B}
 		{47AE208A-3371-46A3-A6F8-BB95D6E54294} = {FEF51E9E-5E39-40BC-B2F8-274AE2C28617}
+		{C8D1ABB7-C75B-4694-9CBC-903276AFCD7E} = {FEF51E9E-5E39-40BC-B2F8-274AE2C28617}
 	EndGlobalSection
 EndGlobal

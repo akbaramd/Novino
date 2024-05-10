@@ -1,9 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-    <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
+    <Import Project="..\..\..\package.props"/>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Novino.Abstractions\Novino.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Microsoft\Extensions\DependencyInjection\" />
+    </ItemGroup>
+    
 
 </Project>
