@@ -1,6 +1,6 @@
 namespace Novino.Abstractions.Novino.Abstractions;
 
-public interface IInitializer
+public interface INovInitializer
 {
   Task InitializeAsync();
 }

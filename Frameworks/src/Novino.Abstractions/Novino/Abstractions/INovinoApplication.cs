@@ -1,6 +1,6 @@
 namespace Novino.Abstractions.Novino.Abstractions;
 
-public interface INovinApplication
+public interface INovinoApplication
 {
   public void Run();
   public Task RunAsync();

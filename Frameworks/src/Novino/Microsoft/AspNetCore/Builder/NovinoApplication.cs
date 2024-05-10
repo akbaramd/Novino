@@ -3,14 +3,14 @@ using Novino.Novino;
 
 namespace Novino.Microsoft.AspNetCore.Builder;
 
-public class NovinApplication (WebApplication application)  : INovinApplication
+public class NovinoApplication (WebApplication application)  : INovinoApplication
 {
   private readonly WebApplication _webApplication = application;
 
-  public static INovinApplicationBuilder CreateBuilder()
+  public static INovBuilder CreateBuilder()
   {
     var builder = WebApplication.CreateBuilder();
-    return new NovinApplicationBuilder(builder);
+    return new NovBuilder(builder);
   }
 
 

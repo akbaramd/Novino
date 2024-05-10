@@ -4,22 +4,22 @@ using Novino.Microsoft.AspNetCore.Builder;
 
 namespace Novino.Novino;
 
-public class NovinApplicationBuilder: INovinApplicationBuilder
+public class NovBuilder: INovBuilder
 {
   private readonly WebApplicationBuilder _applicationBuilder;
   private readonly ConcurrentDictionary<string, bool> _registry = new();
   private readonly List<Action<IServiceProvider>> _buildActions = [];
   private readonly IServiceCollection _services;
-  IServiceCollection INovinApplicationBuilder.Services => _services;
+  IServiceCollection INovBuilder.Services => _services;
         
   public IConfiguration Configuration { get; }
 
-  internal NovinApplicationBuilder(WebApplicationBuilder applicationBuilder)
+  internal NovBuilder(WebApplicationBuilder applicationBuilder)
   {
     _applicationBuilder = applicationBuilder;
     _buildActions = new List<Action<IServiceProvider>>();
     _services = applicationBuilder.Services;
-    _services.AddSingleton<IStartupInitializer>(new StartupInitializer());
+    _services.AddSingleton<INovStartupInitializer>(new NovStartupInitializer());
     Configuration = applicationBuilder.Configuration;
   }
 
@@ -29,27 +29,27 @@ public class NovinApplicationBuilder: INovinApplicationBuilder
   public void AddBuildAction(Action<IServiceProvider> execute)
     => _buildActions.Add(execute);
 
-  public void AddInitializer(IInitializer initializer)
+  public void AddInitializer(INovInitializer novInitializer)
     => AddBuildAction(sp =>
     {
-      var startupInitializer = sp.GetRequiredService<IStartupInitializer>();
-      startupInitializer.AddInitializer(initializer);
+      var startupInitializer = sp.GetRequiredService<INovStartupInitializer>();
+      startupInitializer.AddInitializer(novInitializer);
     });
 
-  public void AddInitializer<TInitializer>() where TInitializer : IInitializer
+  public void AddInitializer<TInitializer>() where TInitializer : INovInitializer
     => AddBuildAction(sp =>
     {
       var initializer = sp.GetRequiredService<TInitializer>();
-      var startupInitializer = sp.GetRequiredService<IStartupInitializer>();
+      var startupInitializer = sp.GetRequiredService<INovStartupInitializer>();
       startupInitializer.AddInitializer(initializer);
     });
 
-  public INovinApplication Build()
+  public INovinoApplication Build()
   {
     var application = _applicationBuilder.Build();
-    var initializer = application.Services.CreateScope().ServiceProvider.GetRequiredService<IStartupInitializer>();
+    var initializer = application.Services.CreateScope().ServiceProvider.GetRequiredService<INovStartupInitializer>();
     _buildActions.ForEach(a => a(application.Services));
     initializer.InitializeAsync();
-    return new NovinApplication(application);
+    return new NovinoApplication(application);
   }
 }

@@ -3,14 +3,14 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Novino.Abstractions.Novino.Abstractions;
 
-public interface INovinApplicationBuilder
+public interface INovBuilder
 {
   IServiceCollection Services { get; }
   IConfiguration Configuration { get; }
   bool TryRegister(string name);
   void AddBuildAction(Action<IServiceProvider> execute);
-  void AddInitializer(IInitializer initializer);
-  void AddInitializer<TInitializer>() where TInitializer : IInitializer;
+  void AddInitializer(INovInitializer novInitializer);
+  void AddInitializer<TInitializer>() where TInitializer : INovInitializer;
   
-  public INovinApplication Build();
+  public INovinoApplication Build();
 }
