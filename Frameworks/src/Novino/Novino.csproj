@@ -1,14 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
+    <PropertyGroup>
+        <RootNamespace>Novino.Abstractions</RootNamespace>
+    </PropertyGroup>
+
     <Import Project="..\..\..\package.props"/>
 
     <ItemGroup>
-      <ProjectReference Include="..\Novino.Abstractions\Novino.Abstractions.csproj" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.0"/>
+        <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0"/>
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Microsoft\Extensions\DependencyInjection\" />
-    </ItemGroup>
-    
 
 </Project>

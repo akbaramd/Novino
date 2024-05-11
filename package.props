@@ -1,0 +1,21 @@
+<Project>
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <OutputType>Library</OutputType>
+        <IsPackable>true</IsPackable>
+        <Version>1.0.8</Version>
+        <Authors>Akbar Ahmadi Saray</Authors>
+        <Company>akbar-ahmadi.ir</Company>
+        <PackageProjectUrl>https://akbaramd.github.io/Novin</PackageProjectUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RootNamespace/>
+        <RepositoryUrl>https://github.com/akbaramd/Novin</RepositoryUrl>
+        <!--    <PackageIcon>bonyan.png</PackageIcon>-->
+    </PropertyGroup>
+    <ItemGroup>
+        <!--    <None Include="../../bonyan.png" Pack="true" PackagePath="." />-->
+    </ItemGroup>
+</Project>
