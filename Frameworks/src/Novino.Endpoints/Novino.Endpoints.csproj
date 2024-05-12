@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+
+    <Import Project="..\..\..\package.props"/>
+
+
+    <ItemGroup>
+      <ProjectReference Include="..\Novino\Novino.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.9.1" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+    </ItemGroup>
+
+</Project>

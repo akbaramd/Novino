@@ -4,21 +4,21 @@ namespace Novino.Test;
 
 public class ApplicationTest
 {
-    private INovinoApplicationBuilder _applicationBuilder;
+    private INovinoBuilder _builder;
 
 
     [SetUp]
     public void Setup()
     {
-        _applicationBuilder = NovinoWebApplication.CreateBuilder();
+        _builder = NovinoWebApplication.CreateBuilder();
     }
 
     [Test]
     public void TestApplicationInitializerWork()
     {
         var test = 0;
-        _applicationBuilder.AddBuildAction(c => { test++; });
-        _applicationBuilder.Build().Run();
+        _builder.Initialize(c => { test++; });
+        _builder.Build().Run();
         Assert.That(test, Is.EqualTo(1));
     }
 }

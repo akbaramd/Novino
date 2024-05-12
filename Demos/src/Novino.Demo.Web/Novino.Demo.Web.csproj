@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\..\Frameworks\src\Novino.Mvc\Novino.Mvc.csproj" />
+      <ProjectReference Include="..\..\..\Frameworks\src\Novino.Endpoints\Novino.Endpoints.csproj" />
     </ItemGroup>
 
 </Project>

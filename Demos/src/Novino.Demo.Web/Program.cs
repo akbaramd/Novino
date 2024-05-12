@@ -3,11 +3,13 @@
 using Novin;
 using Novino.Demo.Web.Endpoints;
 
-var builder = NovinoWebApplication.CreateBuilder();
-builder.Services.AddScoped<HealthEndpoint>();
-builder.AddMvc();
-// Build And Start Application
-await builder
-    .Build()
-    .UseMvc()
-    .RunAsync();
+await NovinoWebApplication
+  .CreateBuilder()
+  .AddEndpoints()
+  .Build()
+  .UseEndpoints(c =>
+  {
+    c.MapEndpoint<TestGetEndpoint>();
+    c.MapEndpoint<TestPostEndpoint>();
+  })
+  .RunAsync();
