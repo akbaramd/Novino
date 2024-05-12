@@ -14,43 +14,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0c770415-fa28-458f-af1c-f1d6f8265127" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Endpoints/TestGetEndpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Endpoints/TestPostEndpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Endpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/EndpointConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/HealthEndpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/IEndpoint.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Models/EndpointResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/NovinoEndpointsOptions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Validations/IEndpointValidator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Validations/IValidationErrors.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Validations/PropertyChainExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Validations/ValidationExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/Validations/ValidationFailureException.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/NovinoApplicationBuilderExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/NovinoEndpointRouteBuilderExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Class1.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novino.Scheduler.Quartz.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Scheduler/NovinSchedulerExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Novino/Check.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino/System/CollectionExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frameworks/src/Novino/System/StringExtensions.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Novino/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Novino/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Endpoints/HealthEndpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Novino.Demo.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Novino.Demo.Web.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Demos/src/Novino.Demo.Web/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novin/Mvc/Conventions/AbpServiceConventionWrapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novin/Mvc/Conventions/ConventionalControllerFeatureProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novin/Mvc/Endpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novin/Mvc/IEndpoint.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novin/MvcNovinoApplicationBuilderExtensions.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Mvc/Novino.Mvc.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novino.Endpoints.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino/Microsoft/AspNetCore/Builder/NovinoWebApplication.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Microsoft/AspNetCore/Builder/NovinoWebApplication.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino/Novino.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Novino.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino/Novino/Abstractions/INovinoApplicationBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Novino/Abstractions/INovinoBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino/Novino/NovWebApplicationBuilder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Novino/NovWebApplicationBuilder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/ApplicationTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/ApplicationTest.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Novino.sln" beforeDir="false" afterPath="$PROJECT_DIR$/Novino.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novin/NovinSchedulerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novin/NovinSchedulerExtensions.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +149,7 @@
       <updated>1715348860990</updated>
       <workItem from="1715348862018" duration="18544000" />
       <workItem from="1715433453764" duration="4000" />
-      <workItem from="1715488138113" duration="26024000" />
+      <workItem from="1715488138113" duration="27440000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -202,7 +167,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715351322490</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary=".">
+      <option name="closed" value="true" />
+      <created>1715515318034</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715515318034</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
