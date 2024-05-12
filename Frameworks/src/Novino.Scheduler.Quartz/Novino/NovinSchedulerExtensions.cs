@@ -1,7 +1,7 @@
 ﻿using Novino.Abstractions;
 using Quartz;
 
-namespace Novin;
+namespace Novino;
 
 public static class NovinSchedulerExtensions
 {

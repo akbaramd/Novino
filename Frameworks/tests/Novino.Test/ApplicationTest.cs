@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
+using Novino.Abstractions;
 
 namespace Novino.Test;
 
 public class ApplicationTest
 {
-    private INovinoBuilder _builder;
+    private INovinoBuilder _builder = null!;
 
 
     [SetUp]

@@ -15,7 +15,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0c770415-fa28-458f-af1c-f1d6f8265127" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Novino/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Novino/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novin/NovinSchedulerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novin/NovinSchedulerExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novino.Endpoints.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novino.Endpoints.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novin/NovinSchedulerExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novino/NovinSchedulerExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novino.Scheduler.Quartz.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novino.Scheduler.Quartz.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/src/Novino/Novino.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/src/Novino/Novino.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/ApplicationTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/ApplicationTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/GlobalUsings.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Frameworks/tests/Novino.Test/GlobalUsings.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.props" beforeDir="false" afterPath="$PROJECT_DIR$/package.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +45,9 @@
     <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/Endpoints/NovinoEndpointsOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/NovinoApplicationBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/NovinoEndpointRouteBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/Novino/NovinSchedulerExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino/Novino/Abstractions/INovinoApplication.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino/Novino/Abstractions/INovinoApplicationBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino/Novino/Abstractions/INovinoBuilder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Frameworks/src/Novino/Novino/NovWebApplicationBuilder.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -56,9 +63,11 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.Novino.Demo.Web: http.executor": "Run",
+    "Publish to folder.Publish Novino.Scheduler.Quartz to folder.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,6 +84,10 @@
   }
 }]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Novino.Demo.Web: http">
+    <configuration name="Publish Novino.Scheduler.Quartz to folder" type="DotNetFolderPublish" factoryName="Publish to folder">
+      <riderPublish configuration="Release" platform="Any CPU" runtime="Portable" target_folder="$PROJECT_DIR$/Frameworks/src/Novino.Scheduler.Quartz/bin/Release/net8.0/publish" target_framework="net8.0" uuid_high="5131874287755608321" uuid_low="-5890574355670799747" />
+      <method v="2" />
+    </configuration>
     <configuration name="Novino" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -149,7 +162,8 @@
       <updated>1715348860990</updated>
       <workItem from="1715348862018" duration="18544000" />
       <workItem from="1715433453764" duration="4000" />
-      <workItem from="1715488138113" duration="27440000" />
+      <workItem from="1715488138113" duration="28947000" />
+      <workItem from="1715521652414" duration="141000" />
     </task>
     <task id="LOCAL-00001" summary=".">
       <option name="closed" value="true" />
@@ -175,7 +189,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715515318034</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary=".">
+      <option name="closed" value="true" />
+      <created>1715520062714</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715520062714</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,40 +215,19 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/AspNetCore/Conventions/ConventionalRouteBuilder.cs</url>
           <line>24</line>
-          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.Mvc\Novin\Mvc\Conventions\ConventionalRouteBuilder.cs" initialLine="24" containingFunctionPresentation="Method 'Build'">
-            <startOffsets>
-              <option value="564" />
-            </startOffsets>
-            <endOffsets>
-              <option value="593" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.Mvc\Novin\Mvc\Conventions\ConventionalRouteBuilder.cs" initialLine="24" containingFunctionPresentation="Method 'Build'" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/AspNetCore/Conventions/ConventionalRouteBuilder.cs</url>
           <line>21</line>
-          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.Mvc\Novin\Mvc\Conventions\ConventionalRouteBuilder.cs" initialLine="21" containingFunctionPresentation="Method 'Build'">
-            <startOffsets>
-              <option value="533" />
-            </startOffsets>
-            <endOffsets>
-              <option value="548" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.Mvc\Novin\Mvc\Conventions\ConventionalRouteBuilder.cs" initialLine="21" containingFunctionPresentation="Method 'Build'" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Frameworks/src/Novino.Endpoints/Novin/NovinoApplicationBuilderExtensions.cs</url>
           <line>58</line>
-          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.AspNetCore\Novin\NovinoApplicationBuilderExtensions.cs" initialLine="58" containingFunctionPresentation="Lambda expression inside Method 'UseEndpoints'">
-            <startOffsets>
-              <option value="1709" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1747" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\Projects\Novino\Frameworks\src\Novino.AspNetCore\Novin\NovinoApplicationBuilderExtensions.cs" initialLine="58" containingFunctionPresentation="Lambda expression inside Method 'UseEndpoints'" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
