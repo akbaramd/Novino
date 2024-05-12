@@ -20,10 +20,6 @@
         <PackageReference Include="Quartz.Extensions.Hosting" Version="3.9.0" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Novino\Scheduler\Quartz\" />
-    </ItemGroup>
-
 
 
 

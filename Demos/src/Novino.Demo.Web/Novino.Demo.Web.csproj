@@ -8,6 +8,8 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\..\Frameworks\src\Novino.Endpoints\Novino.Endpoints.csproj" />
+      <ProjectReference Include="..\..\..\Frameworks\src\Novino.Scheduler.Quartz\Novino.Scheduler.Quartz.csproj" />
     </ItemGroup>
+
 
 </Project>
