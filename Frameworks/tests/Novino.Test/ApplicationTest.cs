@@ -11,7 +11,7 @@ public class ApplicationTest
     [SetUp]
     public void Setup()
     {
-        _builder = NovinoWebApplication.CreateBuilder();
+        _builder = NovinoWebApplication.CreateBuilder("id","sdasdad");
     }
 
     [Test]

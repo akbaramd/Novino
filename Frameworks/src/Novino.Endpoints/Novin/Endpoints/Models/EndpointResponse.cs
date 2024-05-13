@@ -6,10 +6,10 @@ namespace Novin.Endpoints.Models;
 
 
 
-public class EndpointErrorResponse<TResponse> 
+public class NovinErrorEndpointResponse<TResponse> 
 {
   public HttpStatusCode HttpStatus { get; set; } = default!;
   public string ErrorMessage { get; set; } = default!;
   public string ErrorCode { get; set; }= default!;
-  public List<ValidationFailure> Validations { get; set; } =[];
+  public List<ValidationFailure>? Validations { get; set; } =[];
 }

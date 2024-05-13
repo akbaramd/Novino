@@ -6,16 +6,22 @@ using Novino.Demo.Web;
 using Novino.Demo.Web.Endpoints;
 
 await NovinoWebApplication
-  .CreateBuilder()
+  .CreateBuilder("title","Title")
   .AddEndpoints()
+  .AddSwagger(sw =>
+  {
+    sw.AddEndpointsSwagger();
+  })
   .AddQuartz(quartz =>
   {
-    quartz.AddCronJob<TestCronJob>("1 * * * *");
+    quartz.AddCronJob<TestCronJob>("0 * * ? * *");
+    quartz.AddIntervalJob<TestCronJob>(TimeSpan.FromSeconds(5));
   })
   .Build()
   .UseEndpoints(c =>
   {
-    c.MapEndpoint<TestGetEndpoint>();
-    c.MapEndpoint<TestPostEndpoint>();
+    c.MapEndpointFromAssembly(typeof(TestGetEndpoint));
+
   })
+  .UseSwagger()
   .RunAsync();

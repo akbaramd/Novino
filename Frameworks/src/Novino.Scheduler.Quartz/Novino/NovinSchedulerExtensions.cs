@@ -2,6 +2,7 @@
 using Novino.Scheduler;
 using Novino.Scheduler.Quartz;
 using Quartz;
+using Quartz.AspNetCore;
 
 namespace Novino;
 
@@ -15,7 +16,7 @@ public static class NovinSchedulerExtensions
         {  
             configurator.Invoke(new NovinQuartzConfigure(c));
         });
-
+        builder.Services.AddQuartzServer();
         builder.Services.AddQuartzHostedService(options => { options.WaitForJobsToComplete = true; });
         return builder;
     }

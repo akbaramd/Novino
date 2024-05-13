@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using System.Net;
+using FluentValidation;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Novin.Endpoints;
 
 namespace Novino.Demo.Web.Endpoints;
@@ -7,13 +9,25 @@ public class TestPostEndpoint(IServiceProvider serviceProvider) : Endpoint<TestP
 {
   public override void Configure()
   {
-    MapPost("/TestPost");
+    Get("/TestPost");
+    Tag("Test","Testsda asdasd");
     
+    Response(c =>
+    {
+      c.Add(new EndpointDocumentResponse()
+      {
+        StatusCode =  HttpStatusCode.OK,
+        Example = new TestPostEndpointResponse()
+        {
+          Status = "Salam"
+        }
+      });
+    });
   }
 
   public override async Task HandleAsync(TestPostEndpointRequest? request,CancellationToken cancellationToken = default)
   {
-    await SendOkResponseAsync(new TestPostEndpointResponse { Status = request?.Status??"" }, cancellationToken);
+    await SendResponseAsync(new TestPostEndpointResponse { Status = request?.Status??"" }, cancellationToken);
   }
 }
 

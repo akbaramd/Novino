@@ -10,14 +10,16 @@ public class NovinoBuilder : INovinoBuilder
     private readonly ConcurrentDictionary<string, bool> _registry = new();
 
 
-    internal NovinoBuilder(WebApplicationBuilder applicationBuilder)
+    internal NovinoBuilder(WebApplicationBuilder applicationBuilder, NovinoServiceOptions serviceOptions)
     {
         _applicationBuilder = applicationBuilder;
+        ServiceOptions = serviceOptions;
         Services = applicationBuilder.Services;
         _buildActions = new List<Action<IServiceProvider>>();
         applicationBuilder.Services.AddSingleton<INovStartupInitializer>(new NovStartupInitializer());
     }
 
+    public NovinoServiceOptions ServiceOptions { get; }
     public IServiceCollection Services { get; }
 
     public bool TryRegister(string name)
@@ -60,6 +62,6 @@ public class NovinoBuilder : INovinoBuilder
         _buildActions.ForEach(a => a(application.Services));
         startupInitializer.InitializeAsync().GetAwaiter().GetResult();
         application.UseRouting();
-        return new NovinoWebApplication(application);
+        return new NovinoWebApplication(application,ServiceOptions);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Novino.Demo.Web;
 
+[DisallowConcurrentExecution]
 public class TestCronJob : IJob
 {
     public Task Execute(IJobExecutionContext context)

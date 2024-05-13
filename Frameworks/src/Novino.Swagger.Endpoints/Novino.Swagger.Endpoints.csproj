@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <PackageId>Novino.Swagger.Endpoints</PackageId>
+    </PropertyGroup>
+
+    <Import Project="..\..\..\package.props"/>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Novino.Endpoints\Novino.Endpoints.csproj" />
+      <ProjectReference Include="..\Novino.Swagger\Novino.Swagger.csproj" />
+    </ItemGroup>
+
+</Project>

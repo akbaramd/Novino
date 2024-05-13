@@ -2,20 +2,20 @@
 
 namespace Novino.Demo.Web.Endpoints;
 
-public class TestGetEndpoint(IServiceProvider serviceProvider) : Endpoint<HealthEndpointResponse>(serviceProvider)
+public class TestGetEndpoint(IServiceProvider serviceProvider) : Endpoint<TestGetEndpointResponse>(serviceProvider)
 {
   public override void Configure()
   {
-    MapGet("/Test");
+    Get("/");
   }
 
   public override async Task HandleAsync(CancellationToken cancellationToken = default)
   {
-    await SendOkResponseAsync(new HealthEndpointResponse { Status = "Online" }, cancellationToken);
+    await SendResponseAsync(new TestGetEndpointResponse { Status = "Online" }, cancellationToken);
   }
 }
 
-public class HealthEndpointResponse
+public class TestGetEndpointResponse
 {
   public string Status { get; set; } = default!;
 }

@@ -4,12 +4,14 @@ public class HealthEndpoint(IServiceProvider serviceProvider) : Endpoint<HealthE
 {
   public override void Configure()
   {
-    MapGet("/novino/health");
+    Get("/novino/health");
+    
   }
 
+  
   public override async Task HandleAsync(CancellationToken cancellationToken = default)
   {
-    await SendOkResponseAsync(new HealthEndpointResponse { Status = "Online" }, cancellationToken);
+    await SendResponseAsync(new HealthEndpointResponse { Status = "Online" }, cancellationToken);
   }
 }
 
