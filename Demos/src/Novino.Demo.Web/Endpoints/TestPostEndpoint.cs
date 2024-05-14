@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using FluentValidation;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Novin.Endpoints;
 
 namespace Novino.Demo.Web.Endpoints;
@@ -9,7 +10,7 @@ public class TestPostEndpoint(IServiceProvider serviceProvider) : Endpoint<TestP
 {
   public override void Configure()
   {
-    Get("/TestPost");
+    Get("/TestPost/{id}");
     Tag("Test","Testsda asdasd");
     
     Response(c =>
@@ -25,9 +26,9 @@ public class TestPostEndpoint(IServiceProvider serviceProvider) : Endpoint<TestP
     });
   }
 
-  public override async Task HandleAsync(TestPostEndpointRequest? request,CancellationToken cancellationToken = default)
+  protected override async Task HandleAsync(TestPostEndpointRequest? request,CancellationToken cancellationToken = default)
   {
-    await SendResponseAsync(new TestPostEndpointResponse { Status = request?.Status??"" }, cancellationToken);
+    await SendResponseAsync(new TestPostEndpointResponse { Status = request?.Id .ToString()??"" }, cancellationToken);
   }
 }
 
@@ -39,7 +40,11 @@ public class TestPostEndpointResponse
 
 public class TestPostEndpointRequest
 {
-  public string Status { get; set; } = default!;
+  [FromRoute(Name = "id")]
+  public Guid Id { get; set; } = default!;
+  
+  public int  Take { get; set; } = 10;
+  public int  Skip { get; set; } = 0;
 }
 
 
@@ -47,6 +52,6 @@ public class TestPostEndpointRequestValidator : AbstractValidator<TestPostEndpoi
 {
   public TestPostEndpointRequestValidator()
   {
-    RuleFor(x => x.Status).NotNull().NotEmpty();
+    RuleFor(x => x.Id).NotNull().NotEmpty();
   }
 }

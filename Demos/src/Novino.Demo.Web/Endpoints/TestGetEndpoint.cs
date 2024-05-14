@@ -1,4 +1,5 @@
-﻿using Novin.Endpoints;
+﻿using Microsoft.AspNetCore.Mvc;
+using Novin.Endpoints;
 
 namespace Novino.Demo.Web.Endpoints;
 
@@ -17,5 +18,6 @@ public class TestGetEndpoint(IServiceProvider serviceProvider) : Endpoint<TestGe
 
 public class TestGetEndpointResponse
 {
+  
   public string Status { get; set; } = default!;
 }
