@@ -10,7 +10,7 @@ public class TestGetEndpoint(IServiceProvider serviceProvider) : Endpoint<TestGe
     Get("/");
   }
 
-  public override async Task HandleAsync(CancellationToken cancellationToken = default)
+  protected override async Task HandleAsync(CancellationToken cancellationToken = default)
   {
     await SendResponseAsync(new TestGetEndpointResponse { Status = "Online" }, cancellationToken);
   }

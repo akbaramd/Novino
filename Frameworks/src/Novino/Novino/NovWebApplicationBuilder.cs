@@ -27,25 +27,28 @@ public class NovinoBuilder : INovinoBuilder
         return _registry.TryAdd(name, true);
     }
 
-    public void Initialize(Action<IServiceProvider> execute)
+    public INovinoBuilder Initialize(Action<IServiceProvider> execute)
     {
         _buildActions.Add(execute);
+        return this;
     }
 
-    public void Configure<TOptions>(Action<TOptions> configure) where TOptions : class
+    public INovinoBuilder Configure<TOptions>(Action<TOptions> configure) where TOptions : class
     {
       _applicationBuilder.Services.Configure<TOptions>(configure);
+      return this;
     }
-    public void AddInitializer(INovInitializer novInitializer)
+    public INovinoBuilder AddInitializer(INovInitializer novInitializer)
     {
         Initialize(sp =>
         {
             var startupInitializer = sp.GetRequiredService<INovStartupInitializer>();
             startupInitializer.AddInitializer(novInitializer);
         });
+        return this;
     }
 
-    public void AddInitializer<TInitializer>() where TInitializer : INovInitializer
+    public INovinoBuilder AddInitializer<TInitializer>() where TInitializer : INovInitializer
     {
         Initialize(sp =>
         {
@@ -53,6 +56,7 @@ public class NovinoBuilder : INovinoBuilder
             var startupInitializer = sp.GetRequiredService<INovStartupInitializer>();
             startupInitializer.AddInitializer(initializer);
         });
+        return this;
     }
 
     public INovinoApplication Build()

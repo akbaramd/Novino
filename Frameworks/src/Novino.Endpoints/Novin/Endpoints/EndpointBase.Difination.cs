@@ -60,5 +60,4 @@ public abstract partial class EndpointBase<TResponse>
     Definition.DocumentTag = new EndpointDocumentTag() { Name = name, Description = description };
   }
 
-  public void Response(Action<List<EndpointDocumentResponse>> action) => action.Invoke(Definition.Responses);
 }

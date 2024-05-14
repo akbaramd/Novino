@@ -1,16 +1,27 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.Mime;
 using System.Reflection;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Novin.Endpoints.Models;
 
 namespace Novin.Endpoints;
 
-public abstract class Endpoint<TResponse>(IServiceProvider serviceProvider)
-  : EndpointBase<TResponse>(serviceProvider)
+public abstract class Endpoint<TResponse>(IServiceProvider serviceProvider) : EndpointBase<TResponse>(serviceProvider)
 {
+ 
   public override void Initialize()
   {
     Configure();
+    
+    Description(builder =>
+    {
+      builder.Produces<NovinErrorEndpointResponse<TResponse>>(500, "applciation/json");
+      builder.Produces<TResponse>(200, "applciation/json");
+    });
+
   }
 
   public override async Task ExecuteAsync(CancellationToken cancellationToken = default)
@@ -24,69 +35,37 @@ public abstract class Endpoint<TResponse>(IServiceProvider serviceProvider)
       await SendExceptionAsync(e, cancellationToken);
       throw;
     }
-    
-  
   }
 
-  public abstract Task HandleAsync(CancellationToken cancellationToken = default);
+  protected abstract Task HandleAsync(CancellationToken cancellationToken = default);
 }
 
-public abstract class Endpoint<TRequest, TResponse>(IServiceProvider serviceProvider)
-  : EndpointBase<TResponse>(serviceProvider), IEndpoint
+public abstract class Endpoint<TRequest, TResponse>(
+  IServiceProvider serviceProvider)
+  : EndpointBase<TResponse>(serviceProvider), IEndpoint where TRequest : notnull
 {
-  private IValidator<TRequest>? Validator => ServiceProvider.GetService<IValidator<TRequest>>();
+  private readonly IValidator<TRequest>? _validator = serviceProvider.GetService<IValidator<TRequest>>();
 
+ 
   public override void Initialize()
   {
     Configure();
-    
-    Definition.Parameters = new List<EndpointDocumentParameter>()
+
+    Description(builder =>
     {
-      new()
-      {
-        In = Definition.Method == HttpMethods.Get ? "query" : "body",
-        Name = typeof(TRequest).Name,
-        Type = typeof(TRequest),
-        Example = typeof(TRequest).GetDefaultInstance()
-      }
-    };
-  
+      builder.Produces<TResponse>(200, "applciation/json");
+      builder.Produces<NovinErrorEndpointResponse<TResponse>>(500, "applciation/json");
+      builder.Produces<NovinErrorEndpointResponse<TResponse>>(400, "applciation/json");
+      builder.Accepts<TRequest>("application/json");
+    });
   }
-  
+
   public override async Task ExecuteAsync(CancellationToken cancellationToken = default)
   {
     try
     {
-      TRequest? request;
-      if (Definition.Method == HttpMethods.Get || Definition.Method == HttpMethods.Delete)
-      {
-        request = GetValueFromQuery();
-      }
-      else
-      {
-        request = await HttpContext.Request.ReadFromJsonAsync<TRequest>(cancellationToken);
-      }
-      
-       
-      if (Validator is not null)
-      {
-        if (request != null)
-        {
-          if (Validator != null)
-          {
-            var validateResult = await Validator.ValidateAsync(request, cancellationToken);
-            if (!validateResult.IsValid)
-            {
-               AddValidationError(validateResult.Errors);
-               await SendValidationErrorAsync(cancellationToken);
-              return;
-            }
-
-          }
-        }
-      }
-
-
+      var request = GetRequest(cancellationToken);
+      await ValidateRequestAsync(request, cancellationToken);
       await HandleAsync(request, cancellationToken);
     }
     catch (Exception e)
@@ -95,85 +74,80 @@ public abstract class Endpoint<TRequest, TResponse>(IServiceProvider serviceProv
     }
   }
 
+  private TRequest? GetRequest(CancellationToken cancellationToken)
+  {
+    if (Definition.Method == HttpMethods.Get || Definition.Method == HttpMethods.Delete)
+      return GetValueFromQuery();
+
+    return HttpContext.Request.ReadFromJsonAsync<TRequest>(cancellationToken).Result;
+  }
+
   private TRequest GetValueFromQuery()
   {
     var request = Activator.CreateInstance<TRequest>();
 
-    foreach (var property in request?.GetType().GetProperties()!)
+    foreach (var property in request!.GetType().GetProperties())
     {
-      var fromRouteAttribute = property.GetCustomAttribute<FromRouteAttribute>();
-      var fromHeaderAttribute = property.GetCustomAttribute<FromHeaderAttribute>();
-      var fromQueryAttribute = property.GetCustomAttribute<FromQueryAttribute>();
-
-      if (fromHeaderAttribute != null)
-      {
-        var name = fromHeaderAttribute.Name ?? property.Name;
-        HttpContext.Request.Headers.TryGetValue(name, out var value);
-        SetProperty(property, request, value);
-      }
-      else if (fromRouteAttribute != null)
-      {
-        var name = fromRouteAttribute.Name ?? property.Name;
-        HttpContext.Request.RouteValues.TryGetValue(name, out var value);
-        SetProperty(property, request, value?.ToString());
-
-      }
-      else 
-      {
-        var name = fromQueryAttribute?.Name ?? property.Name;
-        HttpContext.Request.Query.TryGetValue(name, out var value);
-        SetProperty(property, request, value);
-      }
+      var value = GetValueFromAttribute(property);
+      SetProperty(property, request, value);
     }
-    
+
     return request;
   }
 
-  private static void SetProperty(PropertyInfo property, [DisallowNull] TRequest request, string? value)
+  private string? GetValueFromAttribute(PropertyInfo property)
   {
-    if (value == null)
+    var fromHeaderAttribute = property.GetCustomAttribute<FromHeaderAttribute>();
+    var fromRouteAttribute = property.GetCustomAttribute<FromRouteAttribute>();
+    var fromQueryAttribute = property.GetCustomAttribute<FromQueryAttribute>();
+
+    if (fromHeaderAttribute != null)
     {
-      // No value to set, so exit early
+      return HttpContext.Request.Headers[fromHeaderAttribute.Name ?? property.Name].ToString();
+    }
+
+    if (fromRouteAttribute != null)
+    {
+      var value = HttpContext.Request.RouteValues[fromRouteAttribute.Name ?? property.Name];
+      return value?.ToString();
+    }
+
+    if (fromQueryAttribute != null)
+    {
+      var value = HttpContext.Request.Query[fromQueryAttribute.Name ?? property.Name];
+      return value.ToString();
+    }
+
+    return null;
+  }
+
+  private async Task ValidateRequestAsync(TRequest? request, CancellationToken cancellationToken)
+  {
+    if (_validator != null && request != null)
+    {
+      var validateResult = await _validator.ValidateAsync(request, cancellationToken);
+      if (!validateResult.IsValid)
+      {
+        AddValidationError(validateResult.Errors);
+        await SendValidationErrorAsync(cancellationToken);
+        throw new ArgumentException("Validation failed");
+      }
+    }
+  }
+
+  private void SetProperty(PropertyInfo property, TRequest request, string? value)
+  {
+    if (value == null) return;
+
+    foreach (var conversionFunction in EndpointOptions.Value.Conversions
+               .Where(conversionFunction => property.PropertyType == conversionFunction.targetType))
+    {
+      property.SetValue(request, conversionFunction.mapTo.DynamicInvoke(value));
       return;
     }
 
-    // Check if property is nullable
-    var underlyingType = Nullable.GetUnderlyingType(property.PropertyType);
-
-    // Convert value to the appropriate type
-    object? convertedValue = null;
-    if (property.PropertyType == typeof(string))
-    {
-      // For string properties, no conversion needed
-      convertedValue = value;
-    }
-    else if (property.PropertyType.IsEnum)
-    {
-      // For enum properties, parse the enum value
-      convertedValue = Enum.Parse(property.PropertyType, value);
-    }
-    else if (underlyingType != null)
-    {
-      // For nullable properties, handle conversion to the underlying type
-      if (string.IsNullOrEmpty(value))
-      {
-        convertedValue = null;
-      }
-      else
-      {
-        convertedValue = Convert.ChangeType(value, underlyingType);
-      }
-    }
-    else
-    {
-      // For non-nullable properties, handle conversion directly
-      convertedValue = Convert.ChangeType(value, property.PropertyType);
-    }
-
-    // Set the property value
-    property.SetValue(request, convertedValue);
-    
+    throw new ArgumentException($"Failed to set property '{property.Name}' with value '{value}'");
   }
 
-  protected abstract Task HandleAsync(TRequest? request, CancellationToken cancellationToken = default);
+  protected abstract Task HandleAsync(TRequest? request, CancellationToken cancellationToken);
 }

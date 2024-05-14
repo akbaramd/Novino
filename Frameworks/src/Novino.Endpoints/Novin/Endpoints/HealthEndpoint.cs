@@ -8,8 +8,8 @@ public class HealthEndpoint(IServiceProvider serviceProvider) : Endpoint<HealthE
     
   }
 
-  
-  public override async Task HandleAsync(CancellationToken cancellationToken = default)
+
+  protected override async Task HandleAsync(CancellationToken cancellationToken = default)
   {
     await SendResponseAsync(new HealthEndpointResponse { Status = "Online" }, cancellationToken);
   }

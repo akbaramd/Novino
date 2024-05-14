@@ -9,7 +9,8 @@ public static class NovinSwaggerConfigureExtensions
 {
     public static INovinoSwaggerConfigure AddEndpointsSwagger(this INovinoSwaggerConfigure builder)
     {
-      builder.Options.DocumentFilter<NovinEndpointDocumentFilter>();
+      // builder.Options.DocumentFilter<NovinEndpointDocumentFilter>();
+     builder.Options.OperationFilter<NovinEndpointOperations>();
         return builder;
     }
 }

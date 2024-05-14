@@ -22,4 +22,5 @@ public interface IEndpoint
   void Initialize();
 
   Task ExecuteAsync(CancellationToken cancellationToken = default);
+  
 }

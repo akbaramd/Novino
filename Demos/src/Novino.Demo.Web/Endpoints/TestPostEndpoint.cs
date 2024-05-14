@@ -10,20 +10,8 @@ public class TestPostEndpoint(IServiceProvider serviceProvider) : Endpoint<TestP
 {
   public override void Configure()
   {
-    Get("/TestPost/{id}");
+    Put("/TestPost/{id}");
     Tag("Test","Testsda asdasd");
-    
-    Response(c =>
-    {
-      c.Add(new EndpointDocumentResponse()
-      {
-        StatusCode =  HttpStatusCode.OK,
-        Example = new TestPostEndpointResponse()
-        {
-          Status = "Salam"
-        }
-      });
-    });
   }
 
   protected override async Task HandleAsync(TestPostEndpointRequest? request,CancellationToken cancellationToken = default)

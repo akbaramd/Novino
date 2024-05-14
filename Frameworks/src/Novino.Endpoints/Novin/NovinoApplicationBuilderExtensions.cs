@@ -30,6 +30,7 @@ public static class NovinoApplicationBuilderExtensions
 
     builder.Services.Configure<NovinoEndpointsOptions>(c =>
     {
+      c.AddConversion(Guid.Parse,guid=> guid.ToString());
       c.RouteBuilders.Add(end =>
       {
         // end.MapControllerRoute("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
